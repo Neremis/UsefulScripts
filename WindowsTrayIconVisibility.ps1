@@ -55,10 +55,6 @@ function Set-TrayIconVisibility() {
 
     if ($iconStreamHex.Contains($applicationNameHex)) {
 
-        $headerBytes = New-Object byte[] $headerSize
-
-        [Array]::Copy($iconStreamBytes, 0, $headerBytes, 0, $headerSize)
-
         $chunkItems = @{}
 
         for ($x = 0; $x -lt [math]::Ceiling(($iconStreamBytes.Count - $headerSize) / $chunkSize); $x++) {
